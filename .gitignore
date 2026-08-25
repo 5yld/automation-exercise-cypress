@@ -1,0 +1,22 @@
+node_modules/
+
+# Artefatos gerados pela execucao dos testes.
+# Ficam de fora do repositorio de proposito: sao resultado, nao codigo-fonte.
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/reports/
+
+# Ambiente local
+cypress.env.json
+.env
+
+# Sistema operacional / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
