@@ -22,7 +22,7 @@ export default class CartPage extends BasePage {
   }
 
   open() {
-    this.visit('/view_cart');
+    cy.visit('/view_cart');
     return this;
   }
 

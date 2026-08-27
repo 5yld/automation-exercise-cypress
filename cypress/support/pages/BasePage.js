@@ -19,10 +19,10 @@ export default class BasePage {
     return cy.get('a[href="/products"]').first();
   }
 
-  visit(path = '/') {
-    cy.visit(path);
-    return this;
-  }
+//  visit(path = '/') {
+//    cy.visit(path);
+//    return this;
+//  }
 
   goToProducts() {
     this.productsLink.click();

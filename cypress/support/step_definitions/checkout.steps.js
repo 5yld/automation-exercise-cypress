@@ -1,7 +1,7 @@
 import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import CartPage from '../../support/pages/CartPage';
-import CheckoutPage from '../../support/pages/CheckoutPage';
-import PaymentPage from '../../support/pages/PaymentPage';
+import CartPage from '../pages/CartPage';
+import CheckoutPage from '../pages/CheckoutPage';
+import PaymentPage from '../pages/PaymentPage';
 
 const cartPage = new CartPage();
 const checkoutPage = new CheckoutPage();

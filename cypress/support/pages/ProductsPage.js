@@ -42,7 +42,7 @@ export default class ProductsPage extends BasePage {
   }
 
   open() {
-    this.visit('/products');
+    cy.visit('/products');
     this.pageTitle.should('contain', 'All Products');
     return this;
   }

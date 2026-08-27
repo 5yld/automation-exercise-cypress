@@ -1,7 +1,7 @@
 import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import LoginPage from '../../support/pages/LoginPage';
-import SignupPage from '../../support/pages/SignupPage';
-import { buildUser } from '../../support/factories/userFactory';
+import LoginPage from '../pages/LoginPage';
+import SignupPage from '../pages/SignupPage';
+import { buildUser } from '../factories/userFactory';
 
 const loginPage = new LoginPage();
 const signupPage = new SignupPage();

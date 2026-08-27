@@ -30,7 +30,7 @@ export default class LoginPage extends BasePage {
   }
 
   open() {
-    this.visit('/login');
+    cy.visit('/login');
     cy.contains('h2', 'Login to your account').should('be.visible');
     return this;
   }

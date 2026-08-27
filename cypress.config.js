@@ -9,7 +9,8 @@ const createEsbuildPlugin =
 module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://automationexercise.com',
-
+    stepDefinitions: 'cypress/support/step_definitions/**/*.js',
+ 
     specPattern: [
       'cypress/e2e/features/**/*.feature',
       'cypress/e2e/api/**/*.cy.js',
@@ -25,7 +26,7 @@ module.exports = defineConfig({
     pageLoadTimeout: 60000,
 
     retries: {
-      runMode: 2,
+      runMode: 1,
       openMode: 0,
     },
 
