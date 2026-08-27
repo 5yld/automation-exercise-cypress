@@ -11,20 +11,25 @@ When('avanço para o checkout', () => {
   cartPage.proceedToCheckout();
 });
 
-When('informo os dados do cartão e confirmo o pagamento', () => {
+When('informo os dados do cartão', () => {
   checkoutPage.addComment('Pedido gerado por teste automatizado.');
   checkoutPage.placeOrder();
 
   paymentPage.shouldBeOpen();
+
   cy.fixture('paymentCard').then((card) => {
-    paymentPage.fillCardDetails(card).confirmPayment();
+    paymentPage.fillCardDetails(card);
   });
 });
 
-Then('devo ver meu endereço de entrega e o resumo do pedido', function () {
-  checkoutPage.shouldBeOpen().shouldShowDeliveryAddressFor(this.user);
+When('confirmo o pagamento', () => {
+  paymentPage.confirmPayment();
 });
 
 Then('devo ver a confirmação do pedido', () => {
   paymentPage.shouldShowOrderConfirmation();
+});
+
+Then('os detalhes do pedido realizado', () => {
+  paymentPage.shouldShowOrderDetails();
 });

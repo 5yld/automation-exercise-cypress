@@ -1,33 +1,42 @@
-/**
- * Gera usuários com e-mail único por execução.
- *
- * O ambiente é público e o cadastro é real: e-mail fixo faria o cenário de
- * cadastro passar apenas na primeira execução e falhar em todas as seguintes.
- */
 export function buildUser(overrides = {}) {
   const uniqueId = `${Date.now()}${Math.floor(Math.random() * 10000)}`;
 
+  /**
+   * Informações de Usuário
+   */
   const user = {
-    name: 'Usuario Teste',
+    name: Cypress.env('USER_NAME'),
     email: `qa.desafio.${uniqueId}@mailinator.com`,
-    password: 'Teste@12345',
+    password: Cypress.env('USER_PASSWORD'),
+
     title: 'Mr',
     birthDate: '10',
     birthMonth: 'May',
     birthYear: '1990',
+
     firstName: 'Usuario',
     lastName: 'Teste',
-    company: 'Empresa Teste',
-    address1: 'Rua das Flores, 100',
-    address2: 'Apto 42',
+
+    company: Cypress.env('USER_COMPANY'),
+    address1: Cypress.env('USER_ADDRESS1'),
+    address2: Cypress.env('USER_ADDRESS2'),
+
     country: 'United States',
     state: 'California',
     city: 'Los Angeles',
     zipcode: '90001',
-    mobileNumber: '11999998888',
+
+    mobileNumber: Cypress.env('USER_MOBILE'),
+
     ...overrides,
   };
 
+    /**
+   * Converte o usuário do formato camelCase (usado na UI) para o
+   * formato snake_case que a API espera.
+   *
+   * @returns {Object} Corpo pronto para enviar no `cy.request`.
+   */
   user.toApiPayload = () => ({
     name: user.name,
     email: user.email,

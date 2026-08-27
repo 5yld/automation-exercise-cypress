@@ -35,20 +35,35 @@ export default class LoginPage extends BasePage {
     return this;
   }
 
+  /**
+   * Realizar Login
+   * @param {string} email 
+   * @param {string} password 
+   * @returns 
+   */
   login(email, password) {
     this.emailField.clear().type(email);
     this.passwordField.clear().type(password, { log: false });
     this.loginButton.click();
     return this;
   }
-
+  /**
+   * Realizar Cadastro
+   * @param {string} name 
+   * @param {string} email 
+   * @returns 
+   */
   startSignup(name, email) {
     this.signupNameField.clear().type(name);
     this.signupEmailField.clear().type(email);
     this.signupButton.click();
     return this;
   }
-
+  /**
+   * Retorno de erro
+   * @param {string} message 
+   * @returns 
+   */
   shouldShowError(message) {
     this.errorMessage.should('be.visible').and('have.text', message);
     return this;

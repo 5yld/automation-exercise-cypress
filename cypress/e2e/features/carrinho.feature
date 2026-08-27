@@ -8,13 +8,13 @@ Funcionalidade: Carrinho de compras
   Contexto:
     Dado que estou na página de produtos
 
-  @smoke @regression
+@smoke @regression
   Cenário: W05 - Adicionar produto ao carrinho
     Quando adiciono ao carrinho o produto 1
     E acesso o carrinho
     Então o produto "Blue Top" deve estar no carrinho
     E a quantidade do produto deve ser 1
-
+    
   @regression
   Cenário: W07 - Remover produto do carrinho
     Dado que adicionei ao carrinho o produto 1

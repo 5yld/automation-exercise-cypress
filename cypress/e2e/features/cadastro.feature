@@ -19,7 +19,7 @@ Funcionalidade: Cadastro de usuário
     E que estou na página de login
     Quando inicio o cadastro com o e-mail de uma conta existente
     Então devo ver a mensagem "Email Address already exist!"
-
+    
   @regression
   Cenário: W08 - Cadastro sem preencher a senha
     Dado que estou na página de login

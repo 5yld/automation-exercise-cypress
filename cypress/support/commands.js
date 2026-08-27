@@ -37,6 +37,9 @@ Cypress.Commands.add('createUserViaApi', (user) => {
     });
 });
 
+/**
+ * Deleta um usuário pela API para uso como massa de teste.
+ */
 Cypress.Commands.add('deleteUserViaApi', (user) => {
   return cy.api('DELETE', 'deleteAccount', {
     body: { email: user.email, password: user.password },

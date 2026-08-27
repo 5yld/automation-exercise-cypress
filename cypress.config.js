@@ -1,3 +1,5 @@
+require('dotenv').config({ path: 'variables.env' });
+
 const { defineConfig } = require('cypress');
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor');
@@ -12,6 +14,7 @@ module.exports = defineConfig({
       'cypress/e2e/features/**/*.feature',
       'cypress/e2e/api/**/*.cy.js',
     ],
+
     supportFile: 'cypress/support/e2e.js',
 
     screenshotOnRunFailure: true,
@@ -20,13 +23,24 @@ module.exports = defineConfig({
 
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 60000,
-    retries: { runMode: 2, openMode: 0 },
+
+    retries: {
+      runMode: 2,
+      openMode: 0,
+    },
 
     viewportWidth: 1440,
     viewportHeight: 900,
 
-    // A aplicação carrega anúncios em iframe que sobrepõem elementos e
-    // interceptam cliques. Bloquear os domínios elimina a intermitência.
+    env: {
+      USER_NAME: process.env.USER_NAME,
+      USER_PASSWORD: process.env.USER_PASSWORD,
+      USER_COMPANY: process.env.USER_COMPANY,
+      USER_ADDRESS1: process.env.USER_ADDRESS1,
+      USER_ADDRESS2: process.env.USER_ADDRESS2,
+      USER_MOBILE: process.env.USER_MOBILE,
+    },
+
     blockHosts: [
       '*googlesyndication.com',
       '*doubleclick.net',
@@ -39,10 +53,14 @@ module.exports = defineConfig({
 
     async setupNodeEvents(on, config) {
       await preprocessor.addCucumberPreprocessorPlugin(on, config);
+
       on(
         'file:preprocessor',
-        createBundler({ plugins: [createEsbuildPlugin(config)] })
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        })
       );
+
       return config;
     },
   },

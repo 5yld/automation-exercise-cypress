@@ -12,6 +12,6 @@ Funcionalidade: Finalização de compra
     Quando adiciono ao carrinho o produto 1
     E acesso o carrinho
     E avanço para o checkout
-    Então devo ver meu endereço de entrega e o resumo do pedido
-    Quando informo os dados do cartão e confirmo o pagamento
+    E informo os dados do cartão
+    E confirmo o pagamento
     Então devo ver a confirmação do pedido
