@@ -35,6 +35,7 @@ describe('API - Conta de usuário', () => {
     });
   });
 
+  // A API retorna HTTP 200 por padrão e encapsula o erro real de negócio (404) dentro do payload.
   context('A07 - POST /verifyLogin com credenciais inválidas', () => {
     it('@regression não autentica e informa 404 no corpo', () => {
       cy.api('POST', 'verifyLogin', {
